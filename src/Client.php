@@ -27,6 +27,10 @@ use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceProfiledetailRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceProfiledetailResponse;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceProfileRequest;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceProfileResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceSolutionkycdetailRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceSolutionkycdetailResponse;
+use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceSolutionkycRequest;
+use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceSolutionkycResponse;
 
 class Client {
     protected $_endpoint;
@@ -162,7 +166,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.6",
+                    "sdk_version" => "1.0.7",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -380,5 +384,55 @@ class Client {
     public function saveGwchildinsuranceProfileEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return SaveGwchildinsuranceProfileResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.profile.save", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 少儿保险 KYC 查询
+     * Summary: 少儿保险 KYC 查询
+     * @param QueryGwchildinsuranceSolutionkycdetailRequest $request
+     * @return QueryGwchildinsuranceSolutionkycdetailResponse
+     */
+    public function queryGwchildinsuranceSolutionkycdetail($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsuranceSolutionkycdetailEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 少儿保险 KYC 查询
+     * Summary: 少儿保险 KYC 查询
+     * @param QueryGwchildinsuranceSolutionkycdetailRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsuranceSolutionkycdetailResponse
+     */
+    public function queryGwchildinsuranceSolutionkycdetailEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsuranceSolutionkycdetailResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.solutionkycdetail.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 少儿保险 KYC 保存
+     * Summary: 少儿保险 KYC 保存
+     * @param SaveGwchildinsuranceSolutionkycRequest $request
+     * @return SaveGwchildinsuranceSolutionkycResponse
+     */
+    public function saveGwchildinsuranceSolutionkyc($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->saveGwchildinsuranceSolutionkycEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 少儿保险 KYC 保存
+     * Summary: 少儿保险 KYC 保存
+     * @param SaveGwchildinsuranceSolutionkycRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return SaveGwchildinsuranceSolutionkycResponse
+     */
+    public function saveGwchildinsuranceSolutionkycEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return SaveGwchildinsuranceSolutionkycResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.solutionkyc.save", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
