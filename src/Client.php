@@ -31,6 +31,12 @@ use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceSolutionkycdetailRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceSolutionkycdetailResponse;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceSolutionkycRequest;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceSolutionkycResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwmcpdefaultChatRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwmcpdefaultChatResponse;
+use AntChain\AIOSPRODUCT\Models\SaveGwchildinsurancePlanningtargetsRequest;
+use AntChain\AIOSPRODUCT\Models\SaveGwchildinsurancePlanningtargetsResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetsRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetsResponse;
 
 class Client {
     protected $_endpoint;
@@ -166,7 +172,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.7",
+                    "sdk_version" => "1.0.8",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -434,5 +440,80 @@ class Client {
     public function saveGwchildinsuranceSolutionkycEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return SaveGwchildinsuranceSolutionkycResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.solutionkyc.save", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: mcp网关调用
+     * Summary: mcp网关调用
+     * @param QueryGwmcpdefaultChatRequest $request
+     * @return QueryGwmcpdefaultChatResponse
+     */
+    public function queryGwmcpdefaultChat($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwmcpdefaultChatEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: mcp网关调用
+     * Summary: mcp网关调用
+     * @param QueryGwmcpdefaultChatRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwmcpdefaultChatResponse
+     */
+    public function queryGwmcpdefaultChatEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwmcpdefaultChatResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwmcpdefault.chat.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 根据最新画像版本，保存指定用户、指定会话参与保险规划的稳定 `childIds`，并返回最新规划上下文。调用方必须传 `profileVersion`、`childIds`、`idempotencyKey`；不按昵称或数组位置选择。
+     * Summary: 根据最新画像版本，保存指定用户、指定会话参与保险规划的稳定 `childIds`，并返回最新规划上下文。调用方必须传 `profileVersion`、`childIds`、`idempotencyKey`；不按昵称或数组位置选择。
+     * @param SaveGwchildinsurancePlanningtargetsRequest $request
+     * @return SaveGwchildinsurancePlanningtargetsResponse
+     */
+    public function saveGwchildinsurancePlanningtargets($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->saveGwchildinsurancePlanningtargetsEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 根据最新画像版本，保存指定用户、指定会话参与保险规划的稳定 `childIds`，并返回最新规划上下文。调用方必须传 `profileVersion`、`childIds`、`idempotencyKey`；不按昵称或数组位置选择。
+     * Summary: 根据最新画像版本，保存指定用户、指定会话参与保险规划的稳定 `childIds`，并返回最新规划上下文。调用方必须传 `profileVersion`、`childIds`、`idempotencyKey`；不按昵称或数组位置选择。
+     * @param SaveGwchildinsurancePlanningtargetsRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return SaveGwchildinsurancePlanningtargetsResponse
+     */
+    public function saveGwchildinsurancePlanningtargetsEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return SaveGwchildinsurancePlanningtargetsResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.planningtargets.save", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 查询指定用户和会话当前生效的少儿保险规划目标。
+     * Summary: 查询指定用户和会话当前生效的少儿保险规划目标。
+     * @param QueryGwchildinsurancePlanningtargetsRequest $request
+     * @return QueryGwchildinsurancePlanningtargetsResponse
+     */
+    public function queryGwchildinsurancePlanningtargets($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsurancePlanningtargetsEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 查询指定用户和会话当前生效的少儿保险规划目标。
+     * Summary: 查询指定用户和会话当前生效的少儿保险规划目标。
+     * @param QueryGwchildinsurancePlanningtargetsRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsurancePlanningtargetsResponse
+     */
+    public function queryGwchildinsurancePlanningtargetsEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsurancePlanningtargetsResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.planningtargets.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
