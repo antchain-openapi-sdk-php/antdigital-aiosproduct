@@ -37,6 +37,8 @@ use AntChain\AIOSPRODUCT\Models\SaveGwchildinsurancePlanningtargetsRequest;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsurancePlanningtargetsResponse;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetsRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetsResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetslatestRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsurancePlanningtargetslatestResponse;
 
 class Client {
     protected $_endpoint;
@@ -172,7 +174,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.8",
+                    "sdk_version" => "1.0.9",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -515,5 +517,30 @@ class Client {
     public function queryGwchildinsurancePlanningtargetsEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return QueryGwchildinsurancePlanningtargetsResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.planningtargets.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 查询最近选择的孩子
+     * Summary: 查询最近选择的孩子
+     * @param QueryGwchildinsurancePlanningtargetslatestRequest $request
+     * @return QueryGwchildinsurancePlanningtargetslatestResponse
+     */
+    public function queryGwchildinsurancePlanningtargetslatest($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsurancePlanningtargetslatestEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 查询最近选择的孩子
+     * Summary: 查询最近选择的孩子
+     * @param QueryGwchildinsurancePlanningtargetslatestRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsurancePlanningtargetslatestResponse
+     */
+    public function queryGwchildinsurancePlanningtargetslatestEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsurancePlanningtargetslatestResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.planningtargetslatest.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
