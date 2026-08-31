@@ -51,6 +51,8 @@ use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceActivetargetRequest;
 use AntChain\AIOSPRODUCT\Models\SaveGwchildinsuranceActivetargetResponse;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceActivetargetRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceActivetargetResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateResponse;
 
 class Client {
     protected $_endpoint;
@@ -186,7 +188,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.12",
+                    "sdk_version" => "1.0.13",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -704,5 +706,30 @@ class Client {
     public function queryGwchildinsuranceActivetargetEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return QueryGwchildinsuranceActivetargetResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.activetarget.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 少儿保险推荐候选详情查询
+     * Summary: 少儿保险推荐候选详情查询
+     * @param QueryGwchildinsuranceRecommendationcandidateRequest $request
+     * @return QueryGwchildinsuranceRecommendationcandidateResponse
+     */
+    public function queryGwchildinsuranceRecommendationcandidate($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 少儿保险推荐候选详情查询
+     * Summary: 少儿保险推荐候选详情查询
+     * @param QueryGwchildinsuranceRecommendationcandidateRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsuranceRecommendationcandidateResponse
+     */
+    public function queryGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsuranceRecommendationcandidateResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.recommendationcandidate.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
