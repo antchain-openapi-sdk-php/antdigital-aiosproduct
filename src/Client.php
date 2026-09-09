@@ -53,6 +53,8 @@ use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceActivetargetRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceActivetargetResponse;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateRequest;
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateResponse;
+use AntChain\AIOSPRODUCT\Models\ResetGwchildinsuranceRecommendationcandidateRequest;
+use AntChain\AIOSPRODUCT\Models\ResetGwchildinsuranceRecommendationcandidateResponse;
 
 class Client {
     protected $_endpoint;
@@ -188,7 +190,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.13",
+                    "sdk_version" => "1.0.14",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -731,5 +733,30 @@ class Client {
     public function queryGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return QueryGwchildinsuranceRecommendationcandidateResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.recommendationcandidate.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 选择预览
+     * Summary: 选择预览
+     * @param ResetGwchildinsuranceRecommendationcandidateRequest $request
+     * @return ResetGwchildinsuranceRecommendationcandidateResponse
+     */
+    public function resetGwchildinsuranceRecommendationcandidate($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->resetGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 选择预览
+     * Summary: 选择预览
+     * @param ResetGwchildinsuranceRecommendationcandidateRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return ResetGwchildinsuranceRecommendationcandidateResponse
+     */
+    public function resetGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return ResetGwchildinsuranceRecommendationcandidateResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.recommendationcandidate.reset", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
