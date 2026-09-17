@@ -55,6 +55,10 @@ use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateRequ
 use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceRecommendationcandidateResponse;
 use AntChain\AIOSPRODUCT\Models\ResetGwchildinsuranceRecommendationcandidateRequest;
 use AntChain\AIOSPRODUCT\Models\ResetGwchildinsuranceRecommendationcandidateResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceCompareproductlistRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceCompareproductlistResponse;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceCompareproductdetailRequest;
+use AntChain\AIOSPRODUCT\Models\QueryGwchildinsuranceCompareproductdetailResponse;
 
 class Client {
     protected $_endpoint;
@@ -190,7 +194,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.0.14",
+                    "sdk_version" => "1.0.15",
                     "_prod_code" => "AIOSPRODUCT",
                     "_prod_channel" => "default"
                 ];
@@ -758,5 +762,55 @@ class Client {
     public function resetGwchildinsuranceRecommendationcandidateEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return ResetGwchildinsuranceRecommendationcandidateResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.recommendationcandidate.reset", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 商品对比列表查询
+     * Summary: 商品对比列表查询
+     * @param QueryGwchildinsuranceCompareproductlistRequest $request
+     * @return QueryGwchildinsuranceCompareproductlistResponse
+     */
+    public function queryGwchildinsuranceCompareproductlist($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsuranceCompareproductlistEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 商品对比列表查询
+     * Summary: 商品对比列表查询
+     * @param QueryGwchildinsuranceCompareproductlistRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsuranceCompareproductlistResponse
+     */
+    public function queryGwchildinsuranceCompareproductlistEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsuranceCompareproductlistResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.compareproductlist.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 商品对比详情查询
+     * Summary: 商品对比详情查询
+     * @param QueryGwchildinsuranceCompareproductdetailRequest $request
+     * @return QueryGwchildinsuranceCompareproductdetailResponse
+     */
+    public function queryGwchildinsuranceCompareproductdetail($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->queryGwchildinsuranceCompareproductdetailEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 商品对比详情查询
+     * Summary: 商品对比详情查询
+     * @param QueryGwchildinsuranceCompareproductdetailRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return QueryGwchildinsuranceCompareproductdetailResponse
+     */
+    public function queryGwchildinsuranceCompareproductdetailEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return QueryGwchildinsuranceCompareproductdetailResponse::fromMap($this->doRequest("1.0", "antdigital.aiosproduct.gwchildinsurance.compareproductdetail.query", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 }
